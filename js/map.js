@@ -25,7 +25,7 @@ function initMap() {
   marker.addListener('dragend', dragEnd);
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(userPoddddds);
+    navigator.geolocation.getCurrentPosition(userPos);
   } else {
     alert('No geolocation');
   }

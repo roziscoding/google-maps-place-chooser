@@ -1,23 +1,11 @@
 'use strict';
 
-let searchMarker = new google.maps.Marker({
-  map: map,
-  animation: google.maps.Animation.BOUNCE,
-  draggable: true
-});
-
-
-
+let searchMarker;
+let btnSearch;
 let txtAddr;
 
 document.addEventListener('DOMContentLoaded', () => {
-  let btnSearch = document.getElementById('btnSearch');
-  txtAddr = document.getElementById('endereco');
-
-  btnSearch.addEventListener('click', (event) => {
-    event.preventDefault();
-    geocode(txtAddr.value, finishSearch);
-  }, false);
+  initObjs();
 }, false);
 
 const finishSearch = (pos) => {
@@ -25,3 +13,22 @@ const finishSearch = (pos) => {
   searchMarker.setTitle(txtAddr.value);
   map.setCenter(pos);
 };
+
+const initObjs = () => {
+
+  btnSearch = document.getElementById('btnSearch');
+  txtAddr = document.getElementById('endereco');
+
+  btnSearch.addEventListener('click', search, false);
+
+  searchMarker = new google.maps.Marker({
+    map: map,
+    animation: google.maps.Animation.BOUNCE,
+    draggable: true
+  });
+}
+
+const search = (e) => {
+  e.preventDefault();
+  geocode(txtAddr.value, finishSearch);
+}

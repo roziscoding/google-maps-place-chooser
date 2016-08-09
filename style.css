@@ -1,0 +1,34 @@
+/* make our pages be full width and full height */
+/* positioned absolutely so that the pages can overlap each other as they enter and leave */
+.page        {
+    bottom:0; 
+    position:absolute; 
+    text-align:center;
+    top:0;  
+    width:100%; 
+}
+
+.page h1    { font-size:60px; }
+.page a     { margin-top:50px; }
+
+/* PAGES (specific colors for each page)
+============================================================================= */
+.page-home      { background:#00D0BC; color:#00907c; padding-top: 200px;}
+.page-about     { background:#E59400; color:#a55400; }
+.page-contact   { background:#ffa6bb; color:#9e0000; }
+
+/* ANIMATIONS
+============================================================================= */
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-100%); }
+}
+
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+.ng-enter           { animation: scaleUp 0.5s both ease-in; z-index: 8888; }
+.ng-leave           { animation: slideOutLeft 0.5s both ease-in; z-index: 9999; }
